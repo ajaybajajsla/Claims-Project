@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header class="bar">
+    <h1>Admin configuration</h1>
+    <a class="btn" href="dashboard.html">Back to dashboard</a>
+  </header>
+  <main class="wrap grid two">
+    <section class="card">
+      <h2>Insurers</h2>
+      <div class="bar space">
+        <input id="newInsurer" placeholder="Add insurer">
+        <button id="btnAddInsurer" class="btn">Add</button>
+      </div>
+      <ul id="listInsurers" class="list"></ul>
+    </section>
+
+    <section class="card">
+      <h2>Workshops</h2>
+      <div class="bar space">
+        <input id="newWorkshop" placeholder="Add workshop">
+        <button id="btnAddWorkshop" class="btn">Add</button>
+      </div>
+      <ul id="listWorkshops" class="list"></ul>
+    </section>
+
+    <section class="card">
+      <h2>Depreciation & excess</h2>
+      <div class="grid">
+        <label>Parts % <input id="adminDepParts" type="number" value="30"></label>
+        <label>Paint % <input id="adminDepPaint" type="number" value="50"></label>
+        <label>Glass % <input id="adminDepGlass" type="number" value="0"></label>
+        <label>Fibre % <input id="adminDepFibre" type="number" value="30"></label>
+        <label>Excess (₹) <input id="adminExcess" type="number" value="1000"></label>
+      </div>
+      <button id="btnSaveAdmin" class="btn primary">Save admin</button>
+      <button id="btnResetAdmin" class="btn">Reset defaults</button>
+    </section>
+
+    <section class="card">
+      <h2>Document checklist</h2>
+      <div class="bar space">
+        <input id="newChecklistItem" placeholder="Add checklist item">
+        <button id="btnAddChecklistItem" class="btn">Add</button>
+      </div>
+      <ul id="listChecklist" class="list"></ul>
+    </section>
+  </main>
+</body>
+</html>

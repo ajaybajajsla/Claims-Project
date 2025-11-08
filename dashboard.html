@@ -7,14 +7,67 @@
   <script defer src="app.js"></script>
 </head>
 <body>
-  <header>
+  <header class="bar">
     <h1>Claims Dashboard</h1>
-    <button id="logoutBtn">Logout</button>
+    <div class="bar-actions">
+      <a class="btn" href="admin.html">Admin</a>
+      <button id="logoutBtn" class="btn">Logout</button>
+    </div>
   </header>
-  <main>
-    <h2>Your Claims</h2>
-    <button id="newClaimBtn">Add New Claim</button>
-    <ul id="claimsList"></ul>
+
+  <main class="wrap">
+    <section class="grid tiles">
+      <div class="tile tile-pending" data-status="Pending">
+        <div class="num" id="countPending">0</div><div class="label">Pending</div>
+      </div>
+      <div class="tile tile-wip" data-status="Work In Progress">
+        <div class="num" id="countWip">0</div><div class="label">Work In Progress</div>
+      </div>
+      <div class="tile tile-report" data-status="Report Pending">
+        <div class="num" id="countReportPending">0</div><div class="label">Report Pending</div>
+      </div>
+      <div class="tile tile-generated" data-status="Generated">
+        <div class="num" id="countGenerated">0</div><div class="label">Generated</div>
+      </div>
+      <div class="tile tile-overdue" data-status="Overdue">
+        <div class="num" id="countOverdue">0</div><div class="label">Overdue</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="bar space">
+        <h2>Your claims</h2>
+        <button id="newClaimBtn" class="btn primary">Add New Claim</button>
+      </div>
+
+      <div class="grid filters">
+        <label>Status
+          <select id="fltStatus">
+            <option value="">All</option>
+            <option>Pending</option>
+            <option>Work In Progress</option>
+            <option>Report Pending</option>
+            <option>Generated</option>
+            <option>Overdue</option>
+          </select>
+        </label>
+        <label>Insurer
+          <input id="fltInsurer" placeholder="Type to filter">
+        </label>
+        <label>Vehicle No
+          <input id="fltVeh" placeholder="DLXX1234">
+        </label>
+        <label>Claim/Policy/Ref
+          <input id="fltText" placeholder="Search text">
+        </label>
+        <div class="actions">
+          <button id="btnApplyFilters" class="btn">Search</button>
+          <button id="btnClearFilters" class="btn">Clear</button>
+        </div>
+      </div>
+
+      <ul id="claimsList" class="list"></ul>
+    </section>
   </main>
 </body>
 </html>

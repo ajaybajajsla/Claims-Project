@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Claim editor</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header class="bar">
+    <h1 id="claimTitle">Claim editor</h1>
+    <div class="bar-actions">
+      <a class="btn" href="dashboard.html">Back</a>
+      <button id="saveClaimBtn" class="btn">Save</button>
+      <button id="generateBtn" class="btn primary">Generate</button>
+      <button id="printBtn" class="btn">Print</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <nav class="tabs" id="tabs">
+      <button data-tab="policy" class="active">Policy</button>
+      <button data-tab="vehicle">Vehicle</button>
+      <button data-tab="driver">Driver</button>
+      <button data-tab="loss">Loss</button>
+      <button data-tab="estimate">Estimate</button>
+      <button data-tab="assessment">Assessment</button>
+      <button data-tab="reinspection">Reinspection</button>
+      <button data-tab="docs">Documents & comments</button>
+    </nav>
+
+    <section id="tab-policy" class="card tab active">
+      <div class="grid">
+        <label>Reference No <input id="refNo"></label>
+        <label>Claim No <input id="claimNo"></label>
+        <label>Policy No <input id="policyNo"></label>
+        <label>Insurer <input id="insurer"></label>
+        <label>Insured Name <input id="insuredName"></label>
+        <label>Insured Email <input id="insuredEmail" type="email"></label>
+        <label>Insured Contact <input id="insuredContact"></label>
+        <label>Insured Address <textarea id="insuredAddress"></textarea></label>
+        <label>Estimate amount <input id="estAmount" type="number"></label>
+        <label>Bill amount <input id="billAmount" type="number"></label>
+      </div>
+    </section>
+
+    <section id="tab-vehicle" class="card tab">
+      <div class="grid">
+        <label>Registration No <input id="vehReg"></label>
+        <label>Make <input id="make"></label>
+        <label>Model <input id="model"></label>
+        <label>Year <input id="year" type="number"></label>
+        <label>Chassis No <input id="chassisNo"></label>
+        <label>Engine No <input id="engineNo"></label>
+        <label>Odometer <input id="odometer" type="number"></label>
+        <label>Pre-accident condition <input id="preAccidentCond"></label>
+      </div>
+    </section>
+
+    <section id="tab-driver" class="card tab">
+      <div class="grid">
+        <label>Driver Name <input id="drvName"></label>
+        <label>DL No <input id="drvDlNo"></label>
+        <label>DL Issue Date <input id="drvIssue" type="date"></label>
+        <label>DL Validity <input id="drvValid" type="date"></label>
+        <label>Remarks <textarea id="drvRemarks"></textarea></label>
+      </div>
+    </section>
+
+    <section id="tab-loss" class="card tab">
+      <div class="grid">
+        <label>Date of Loss <input id="lossDate" type="date"></label>
+        <label>Time of Loss <input id="lossTime" type="time"></label>
+        <label>Place of Loss <input id="lossPlace"></label>
+        <label>Cause of Loss <input id="lossCause"></label>
+        <label>Inspection remarks <input id="inspRemarks"></label>
+      </div>
+    </section>
+
+    <section id="tab-estimate" class="card tab">
+      <div class="grid">
+        <label>Workshop <input id="workshop"></label>
+        <label>Workshop GSTIN <input id="workshopGstin"></label>
+        <label>Estimate date <input id="estimateDate" type="date"></label>
+        <label>Bill date <input id="billDate" type="date"></label>
+      </div>
+      <div class="bar space">
+        <h3>Items</h3>
+        <div class="bar-actions">
+          <button id="btnAddItem" class="btn">Add item</button>
+          <button id="btnClearItems" class="btn">Clear</button>
+        </div>
+      </div>
+      <ul id="itemsList" class="list"></ul>
+      <div class="grid">
+        <label><strong>Subtotal</strong> <input id="sumAmount" readonly></label>
+        <label><strong>Tax total</strong> <input id="sumTax" readonly></label>
+        <label><strong>Admissible total</strong> <input id="sumAdmissible" readonly></label>
+      </div>
+    </section>
+
+    <section id="tab-assessment" class="card tab">
+      <div class="grid">
+        <label>Depreciation mode
+          <select id="depMode">
+            <option value="irda">IRDAI</option>
+            <option value="zero">Zero Dep</option>
+            <option value="nil">Nil Depreciation</option>
+          </select>
+        </label>
+        <label>Betterment <input id="betterment" type="number" value="0"></label>
+        <label>Excess <input id="excess" type="number" value="1000"></label>
+        <label>Salvage <input id="salvage" type="number" value="0"></label>
+        <label>Non-admissibles <input id="nonAdmissible" type="number" value="0"></label>
+      </div>
+      <div class="grid">
+        <label><strong>Total admissible</strong> <input id="totalAdmissible" readonly></label>
+        <label><strong>Depreciation total</strong> <input id="depreciationTotal" readonly></label>
+        <label><strong>Net assessed</strong> <input id="netAssessed" readonly></label>
+      </div>
+    </section>
+
+    <section id="tab-reinspection" class="card tab">
+      <div class="bar space">
+        <h3>Reinspection</h3>
+        <div class="bar-actions">
+          <button id="btnAddReinsp" class="btn">Add entry</button>
+          <button id="btnClearReinsp" class="btn">Clear</button>
+        </div>
+      </div>
+      <ul id="reinspectionsList" class="list"></ul>
+    </section>
+
+    <section id="tab-docs" class="card tab">
+      <div class="grid">
+        <label>Public comments <textarea id="commentsPublic"></textarea></label>
+        <label>Private comments <textarea id="commentsPrivate"></textarea></label>
+      </div>
+      <div class="grid">
+        <label>Upload (stub) <input id="fileUpload" type="file" multiple></label>
+      </div>
+      <ul id="uploadList" class="list"></ul>
+    </section>
+
+    <section class="card" id="reportArea" style="display:none;"></section>
+  </main>
+</body>
+</html>
